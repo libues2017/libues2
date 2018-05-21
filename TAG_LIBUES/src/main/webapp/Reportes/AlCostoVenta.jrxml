@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cotizaciones" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="855b043e-ceb8-44b2-be5c-59d59a35b22b">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[bGlidWVzLmRldGFsbGVjb3RpemFjaW9uIEFTICw3MTYsMTU5LDMxNWMyNzlmLWZlOWItNGIxZS1i
+NTQ4LTU5MWI0MWM1YWFlYztsaWJ1ZXMuY290aXphY2lvbiBBUyAsMTkzLDExMCxjNTZiM2M1My01
+MWY0LTRlYjEtODI5Mi1kOGNhZjA0MmJjZDU7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="227"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="766"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<queryString language="SQL">
+		<![CDATA[select 
+					    sum(CASE 
+					     WHEN TIPOFACTURA = 'CONTADO' THEN F.Total
+					     ELSE '0' 
+					     end) AS 'Contado',
+					     sum(CASE 
+					     WHEN TIPOCREDITO = 'EMPLEADOS UES' THEN F.Total
+					     ELSE '0' 
+					     end) AS 'CreditoEmpleados',
+					     sum(CASE 
+					     WHEN (TIPOFACTURA = 'CREDITO' and TIPOCREDITO = ""  ) THEN F.Total
+					     ELSE '0' 
+					     end) AS 'CreditoInstitucional',
+					     T.TOTAL AS 'Transferencias'     
+					FROM FACTURA F LEFT JOIN transferencia T
+					on  F.FECHAFACTURA=T.FECHATRANSFERENCIA
+					Group by (FECHAFACTURA)]]>
+	</queryString>
+	<field name="Contado" class="java.lang.Double"/>
+	<field name="CreditoEmpleados" class="java.lang.Double"/>
+	<field name="CreditoInstitucional" class="java.lang.Double"/>
+	<field name="Transferencias" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="154" splitType="Stretch">
+			<image>
+				<reportElement x="-4" y="0" width="85" height="78" uuid="260ff2f1-0f8b-4ebc-961d-821c81a5d08a"/>
+				<imageExpression><![CDATA["logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="90" y="13" width="270" height="25" uuid="8aa737ac-026c-42c4-9347-86e030a7362f">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Libreria Universitaria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="25" width="315" height="15" uuid="bedb77ce-176c-42e2-952c-17676e5f403c"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Final Avenida Heroes y Martires 30 Julio, San Salvador.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="40" width="205" height="15" uuid="abd6cb57-3b1d-4f05-91d0-cc1642f479ca"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Telefonos: 2511-3077, 2225-9367]]></text>
+			</staticText>
+			<textField pattern="M/d/yy h:mm a">
+				<reportElement positionType="Float" x="455" y="22" width="84" height="20" uuid="37d751d7-0b06-4e9a-a31b-d6198114d12a"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="-4" y="97" width="578" height="45" uuid="d5387ba6-819e-4b69-8ed7-b6e241d8cd48"/>
+			</rectangle>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="-15" y="0" width="85" height="20" uuid="22fb0e34-9b66-4f1b-82f0-33b3ba15173d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ff8582b9-6d44-488a-8efe-2258e615f62d"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="2" width="190" height="18" uuid="621756d7-5409-428f-a7ab-343d9c088407">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="03fb2e75-02cb-41d8-8994-4f99c1df99f0"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Credito Empleados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="118" height="20" uuid="d055875f-c3b4-4aa2-8368-fdaced32c7a0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="51f72597-67b2-4385-8706-21fed93a1104"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Credito Institucional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="20" uuid="b3d0351b-543c-423b-a78f-4b56e36ba0a2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bb2a1e7f-ca31-4d99-899b-0eca2ef6f095"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transferencias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="505" y="0" width="74" height="20" uuid="5c1325c1-51e4-4f75-9f44-69180ec4b59f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="728095b3-c3ba-448b-acf7-13802334a961"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="130" y="19" width="114" height="17" uuid="f7d5e389-8946-4821-b9d8-4b9aeece18a2"/>
+				<textFieldExpression><![CDATA[$F{CreditoEmpleados}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="19" width="112" height="19" uuid="ef783204-9426-43d0-b9a3-52b2303bda99"/>
+				<textFieldExpression><![CDATA[$F{CreditoInstitucional}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="19" width="96" height="16" uuid="a98f58bc-b4e0-4452-82ad-f25aafa22e79"/>
+				<textFieldExpression><![CDATA[$F{Transferencias}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="100" height="13" uuid="f871033c-85d5-41ec-9c17-6e5a963962a6"/>
+				<textFieldExpression><![CDATA[$F{Contado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="505" y="14" width="65" height="30" uuid="40afc3f4-706c-4a3d-b57c-2630831999a9"/>
+				<textFieldExpression><![CDATA[SUM($F{Contado},$F{CreditoEmpleados},$F{CreditoInstitucional})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="53">
+			<textField>
+				<reportElement x="453" y="23" width="100" height="30" uuid="3ec4c228-c1aa-447e-9714-48aeab314ed3"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="470" y="0" width="100" height="30" uuid="92675628-0621-4c5a-b3c8-b6572a86c59c"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" / " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="252" y="87" width="64" height="16" uuid="e6f92255-9f54-4730-89c6-27fd90a4e978"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[REVISADO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="218" y="82" width="131" height="1" uuid="159a1f0b-4c07-475b-bc27-686d8b306b22">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="409" y="85" width="131" height="1" uuid="9e592047-3432-4888-a147-5d9027487f0e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="436" y="90" width="100" height="16" uuid="eddf528f-93f6-4239-a928-a3d95f8925eb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[AUTORIZADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="87" width="94" height="16" uuid="d1436065-f988-4beb-b983-c9541d875fa2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ELABORADO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="82" width="131" height="1" uuid="e868080e-9737-4b50-aef6-10f43994881e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
