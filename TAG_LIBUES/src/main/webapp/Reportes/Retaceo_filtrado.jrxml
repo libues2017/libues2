@@ -3,7 +3,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Retaceo" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
 	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.data.sql.tables"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -458,7 +458,7 @@
 				<textFieldExpression><![CDATA[$F{ESPECIFICOGASTOS}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="319" y="0" width="37" height="19" uuid="da89a314-0418-48e8-95f0-b1293a8752b7"/>
+				<reportElement x="305" y="0" width="37" height="19" uuid="da89a314-0418-48e8-95f0-b1293a8752b7"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="10"/>
 				</textElement>
@@ -472,14 +472,14 @@
 				<text><![CDATA[$]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="269" y="0" width="37" height="19" uuid="56a2989a-f0e7-4a9a-998c-db6bddb5b6a5"/>
+				<reportElement x="255" y="1" width="37" height="19" uuid="56a2989a-f0e7-4a9a-998c-db6bddb5b6a5"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<text><![CDATA[$]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="423" y="0" width="37" height="19" uuid="d07bd859-29e7-41d7-9c89-9cfbc0130cc2"/>
+				<reportElement x="412" y="0" width="37" height="19" uuid="d07bd859-29e7-41d7-9c89-9cfbc0130cc2"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="10"/>
 				</textElement>
@@ -493,7 +493,7 @@
 				<textFieldExpression><![CDATA[$V{Utilidad}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="468" y="1" width="16" height="19" uuid="3e7ffdd9-9ccb-4e99-a19c-d662d224ff82"/>
+				<reportElement x="463" y="1" width="16" height="19" uuid="3e7ffdd9-9ccb-4e99-a19c-d662d224ff82"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="10"/>
 				</textElement>
