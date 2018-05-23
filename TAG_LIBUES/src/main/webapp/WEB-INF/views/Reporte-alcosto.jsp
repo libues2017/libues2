@@ -8,14 +8,24 @@
 <%@ page import="java.util.Locale"%>
   
 
-<% /*Parametros para realizar la conexión*/ 
+<% 
+
+/*Parametros para realizar la conexión*/ 
+
 try{
+	
+	
+	
 	
 		
 String fechainicio= request.getParameter("fecha_inicio");
 String fechafin= request.getParameter("fecha_fin");
 String user=request.getParameter("usuario");
 String grupo=request.getParameter("nombre");
+
+
+
+
 //grupo="VolEntraPro.jasper";
 Connection conexion; 
 Class.forName("com.mysql.jdbc.Driver").newInstance(); 
@@ -27,6 +37,11 @@ File reportFile = new File(cosa+"Reportes/"+grupo);
 System.out.println(reportFile.getPath ());
 SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy-MM-dd");
 
+
+
+
+
+
 SimpleDateFormat formateador = new SimpleDateFormat("MMMM 'de' yyyy", new Locale("es_ES"));
 Date fecha1=null;
 Date fecha2=null;
@@ -35,15 +50,43 @@ fecha1 = formatoDeFecha.parse(fechainicio);
 fecha2 = formatoDeFecha.parse(fechafin);
 //fecha3=formateador.parse(fechainicio);
 //String fechafu=fecha3.toString();
+
+
+
+
+
+
 String fecha = formateador.format(fecha2);
 Map parameters = new HashMap();
 parameters.put("fechini", fecha1); 
 parameters.put("fenili", fecha2); 
 parameters.put("user", user); 
-parameters.put("fec", fecha); 
+//parameters.put("fec", fecha); 
+
+
+
+
+
+
 /*Enviamos la ruta del reporte, los parámetros y la conexión(objeto Connection)*/ 
 byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath (),parameters, conexion); 
 /*Indicamos que la respuesta va a ser en formato PDF*/ 
+
+%>  
+
+<script> 
+function respaldo() {
+    alert(" Resultados3");
+    close();
+    //location.href="http://localhost:8080/TAG_LIBUES/transferencias"; 
+    //location.href="http://192.168.0.52:8080/TAG_LIBUES/transferencias"; 
+} 
+respaldo(); 
+</script> 
+<%
+
+
+
 response.setContentType("application/pdf");
 response.setContentLength(bytes.length); 
 ServletOutputStream ouputStream = response.getOutputStream(); 
