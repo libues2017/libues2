@@ -61,7 +61,7 @@ Map parameters = new HashMap();
 parameters.put("fechini", fecha1); 
 parameters.put("fenili", fecha2); 
 parameters.put("user", user); 
-//parameters.put("fec", fecha); 
+parameters.put("fec", fecha); 
 
 
 
