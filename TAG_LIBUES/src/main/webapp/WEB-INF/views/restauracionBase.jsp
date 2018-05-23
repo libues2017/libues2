@@ -6,7 +6,7 @@
        // Process p = Runtime.getRuntime().exec("/opt/lampp/bin/mysql -u root -p root database prueba");
         
         OutputStream os = p.getOutputStream();
-        FileInputStream fis = new FileInputStream("c:/mytemp/Respaldo.sql");
+        FileInputStream fis = new FileInputStream("c:/Respaldo/Respaldo_Sistema.sql");
         byte[] buffer = new byte[10];
  
         int leido = fis.read(buffer);
