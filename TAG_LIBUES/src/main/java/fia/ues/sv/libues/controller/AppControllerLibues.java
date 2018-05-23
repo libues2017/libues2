@@ -2113,10 +2113,10 @@ public class AppControllerLibues {
 	}
     
     
-    @RequestMapping(value={"/al-costo-venta"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/alcostoventa"}, method = RequestMethod.GET)
 	public String horas(ModelMap model){
 		model.addAttribute("loggedinuser", getPrincipal());
-		return "ReporteRetaceo";
+		return "Reporte-alcosto";
 	}
     
     

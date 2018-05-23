@@ -7,15 +7,16 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Locale"%>
   
+
 <% /*Parametros para realizar la conexión*/ 
 try{
-Integer codigoretaceo=(Integer)session.getAttribute("codigoultimo");
+	
+		
 String fechainicio= request.getParameter("fecha_inicio");
 String fechafin= request.getParameter("fecha_fin");
 String user=request.getParameter("usuario");
 String grupo=request.getParameter("nombre");
 //grupo="VolEntraPro.jasper";
-
 Connection conexion; 
 Class.forName("com.mysql.jdbc.Driver").newInstance(); 
 conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/libues","root","root");
@@ -30,17 +31,16 @@ SimpleDateFormat formateador = new SimpleDateFormat("MMMM 'de' yyyy", new Locale
 Date fecha1=null;
 Date fecha2=null;
 Date fecha3=null;
-//fecha1 = formatoDeFecha.parse(fechainicio);
-//fecha2 = formatoDeFecha.parse(fechafin);
+fecha1 = formatoDeFecha.parse(fechainicio);
+fecha2 = formatoDeFecha.parse(fechafin);
 //fecha3=formateador.parse(fechainicio);
 //String fechafu=fecha3.toString();
-//String fecha = formateador.format(fecha2);
+String fecha = formateador.format(fecha2);
 Map parameters = new HashMap();
-/*parameters.put("fechini", fecha1); 
+parameters.put("fechini", fecha1); 
 parameters.put("fenili", fecha2); 
 parameters.put("user", user); 
-parameters.put("fec", fecha); */
-parameters.put("codigo", codigoretaceo); 
+parameters.put("fec", fecha); 
 /*Enviamos la ruta del reporte, los parámetros y la conexión(objeto Connection)*/ 
 byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath (),parameters, conexion); 
 /*Indicamos que la respuesta va a ser en formato PDF*/ 
@@ -55,8 +55,10 @@ catch(Exception e){
 	   //out.println(e);
 		 %>   <script> 
 	      function respaldoNoRealizado() {
-	          alert("No Se han Encontrado Resultados en este reporte");
+	          alert("No Se han Encontrado Resultados");
 	          close();
+	          //location.href="http://localhost:8080/TAG_LIBUES/transferencias"; 
+	          //location.href="http://192.168.0.52:8080/TAG_LIBUES/transferencias"; 
 	      } 
 	      respaldoNoRealizado(); 
 	  </script> 
