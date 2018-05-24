@@ -3,7 +3,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Retaceo" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
 	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.data.sql.tables"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -63,7 +63,7 @@
 	       libues.autor.`NOMBREAUTOR`,
            libues.producto.`COSTOUNITARIO`,
            libues.ajuste.`CANTIDADINICIAL`,
-           libues.ajuste.`CANTIDADAJUSTE`,
+           libues.ajuste.`CANTIDADSALIDA`,
            libues.ajuste.`FECHAAJUSTE`,
            libues.ajuste.`DESTINO`
 	            
@@ -87,7 +87,7 @@
 	<field name="NOMBREPRODUCTO" class="java.lang.String"/>
 	<field name="NOMBREAUTOR" class="java.lang.String"/>
 	<field name="CANTIDADINICIAL" class="java.lang.Integer"/>
-	<field name="CANTIDADAJUSTE" class="java.lang.Integer"/>
+	<field name="CANTIDADSALIDA" class="java.lang.Integer"/>
 	<field name="COSTOUNITARIO" class="java.math.BigDecimal"/>
 	<field name="FECHAAJUSTE" class="java.util.Date"/>
 	<title>
@@ -243,7 +243,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="77" splitType="Stretch">
+		<band height="80" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="1" y="76" width="574" height="1" uuid="b5d1b728-eba7-4070-89b0-4ab0b30aca5c"/>
 				<graphicElement>
@@ -286,11 +286,11 @@
 				<textFieldExpression><![CDATA[$F{CANTIDADINICIAL}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="331" y="29" width="59" height="30" uuid="93f23f08-19e0-4d27-88f4-50eb094edf20"/>
+				<reportElement x="329" y="20" width="59" height="30" uuid="93f23f08-19e0-4d27-88f4-50eb094edf20"/>
 				<textElement>
 					<font fontName="Arial" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{CANTIDADAJUSTE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{CANTIDADSALIDA}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
