@@ -190,7 +190,7 @@
 				<text><![CDATA[AUTORIZADO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="87" width="94" height="16" uuid="d1436065-f988-4beb-b983-c9541d875fa2"/>
+				<reportElement x="36" y="87" width="94" height="16" uuid="d1436065-f988-4beb-b983-c9541d875fa2"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="10" isBold="false"/>
 				</textElement>
