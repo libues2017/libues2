@@ -77,6 +77,18 @@
 	<field name="CreditoEmpleados" class="java.lang.Double"/>
 	<field name="CreditoInstitucional" class="java.lang.Double"/>
 	<field name="Transferencias" class="java.lang.Double"/>
+	<variable name="totalcontado" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Contado}]]></variableExpression>
+	</variable>
+	<variable name="empleadoues" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{CreditoEmpleados}]]></variableExpression>
+	</variable>
+	<variable name="creditoinstitucional" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{CreditoInstitucional}]]></variableExpression>
+	</variable>
+	<variable name="transferencias" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Transferencias}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -111,21 +123,25 @@
 				<text><![CDATA[Telefonos: 2511-3077, 2225-9367]]></text>
 			</staticText>
 			<textField pattern="M/d/yy h:mm a">
-				<reportElement positionType="Float" x="455" y="22" width="84" height="20" uuid="37d751d7-0b06-4e9a-a31b-d6198114d12a"/>
+				<reportElement positionType="Float" x="436" y="22" width="103" height="20" uuid="37d751d7-0b06-4e9a-a31b-d6198114d12a"/>
 				<textElement>
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement mode="Transparent" x="-4" y="97" width="578" height="45" uuid="d5387ba6-819e-4b69-8ed7-b6e241d8cd48"/>
+				<reportElement mode="Transparent" x="-4" y="92" width="578" height="45" uuid="d5387ba6-819e-4b69-8ed7-b6e241d8cd48"/>
 			</rectangle>
+			<staticText>
+				<reportElement x="97" y="55" width="219" height="26" uuid="0afda985-ad77-4481-b607-e597bb5efddb"/>
+				<text><![CDATA[Reporte de salidas mensual por dia - al costo de venta - mes de ]]></text>
+			</staticText>
 		</band>
 	</title>
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement x="-15" y="0" width="85" height="20" uuid="22fb0e34-9b66-4f1b-82f0-33b3ba15173d">
+				<reportElement x="-11" y="-42" width="85" height="20" uuid="22fb0e34-9b66-4f1b-82f0-33b3ba15173d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ff8582b9-6d44-488a-8efe-2258e615f62d"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -134,7 +150,7 @@
 				<text><![CDATA[Contado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="80" y="2" width="190" height="18" uuid="621756d7-5409-428f-a7ab-343d9c088407">
+				<reportElement x="80" y="-40" width="190" height="18" uuid="621756d7-5409-428f-a7ab-343d9c088407">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="03fb2e75-02cb-41d8-8994-4f99c1df99f0"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -143,7 +159,7 @@
 				<text><![CDATA[Credito Empleados]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="270" y="0" width="118" height="20" uuid="d055875f-c3b4-4aa2-8368-fdaced32c7a0">
+				<reportElement x="270" y="-43" width="118" height="20" uuid="d055875f-c3b4-4aa2-8368-fdaced32c7a0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="51f72597-67b2-4385-8706-21fed93a1104"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -152,7 +168,7 @@
 				<text><![CDATA[Credito Institucional]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="400" y="0" width="100" height="20" uuid="b3d0351b-543c-423b-a78f-4b56e36ba0a2">
+				<reportElement x="400" y="-47" width="100" height="20" uuid="b3d0351b-543c-423b-a78f-4b56e36ba0a2">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bb2a1e7f-ca31-4d99-899b-0eca2ef6f095"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -161,7 +177,7 @@
 				<text><![CDATA[Transferencias]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="505" y="0" width="74" height="20" uuid="5c1325c1-51e4-4f75-9f44-69180ec4b59f">
+				<reportElement x="505" y="-44" width="74" height="20" uuid="5c1325c1-51e4-4f75-9f44-69180ec4b59f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="728095b3-c3ba-448b-acf7-13802334a961"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -186,7 +202,7 @@
 				<textFieldExpression><![CDATA[$F{Transferencias}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="21" width="100" height="13" uuid="f871033c-85d5-41ec-9c17-6e5a963962a6"/>
+				<reportElement x="-1" y="21" width="100" height="13" uuid="f871033c-85d5-41ec-9c17-6e5a963962a6"/>
 				<textFieldExpression><![CDATA[$F{Contado}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -214,7 +230,7 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="112" splitType="Stretch">
+		<band height="106" splitType="Stretch">
 			<staticText>
 				<reportElement x="252" y="87" width="64" height="16" uuid="e6f92255-9f54-4730-89c6-27fd90a4e978"/>
 				<textElement textAlignment="Center">
@@ -251,6 +267,26 @@
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 			</line>
+			<textField>
+				<reportElement x="12" y="16" width="67" height="30" uuid="7b2dc342-a7ff-467b-a53a-56f4ddb79f9c"/>
+				<textFieldExpression><![CDATA[SUM(Math.round($V{totalcontado}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="16" width="100" height="30" uuid="3dd06991-c6b6-423c-ad47-e3c783c7a20b"/>
+				<textFieldExpression><![CDATA[SUM($V{empleadoues})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="19" width="100" height="30" uuid="17f7fd5f-ce74-45f2-a500-481bec4fadb4"/>
+				<textFieldExpression><![CDATA[SUM($V{creditoinstitucional})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="21" width="73" height="30" uuid="91437ec7-026a-47dc-a3f9-f8de16293518"/>
+				<textFieldExpression><![CDATA[SUM($V{transferencias})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="18" width="65" height="30" uuid="8cfa4d6e-9f25-4c76-acd4-6645fbb1c8ff"/>
+				<textFieldExpression><![CDATA[SUM(SUM($V{totalcontado}),SUM($V{empleadoues}),SUM($V{creditoinstitucional}),SUM($V{transferencias}))]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>
