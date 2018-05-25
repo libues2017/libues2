@@ -68,7 +68,7 @@
 					     WHEN (TIPOFACTURA = 'CREDITO' and TIPOCREDITO = ""  ) THEN F.Total
 					     ELSE '0' 
 					     end) AS 'CreditoInstitucional',
-					     T.TOTAL AS 'Transferencias'     
+					     IFNULL(T.TOTAL,0)  'Transferencias'     
 					FROM FACTURA F LEFT JOIN transferencia T
 					on  F.FECHAFACTURA=T.FECHATRANSFERENCIA
 					Group by (FECHAFACTURA)]]>
@@ -191,7 +191,7 @@
 			</textField>
 			<textField>
 				<reportElement x="503" y="14" width="65" height="30" uuid="40afc3f4-706c-4a3d-b57c-2630831999a9"/>
-				<textFieldExpression><![CDATA[SUM($F{Contado},$F{CreditoEmpleados},$F{CreditoInstitucional})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[SUM($F{Contado},$F{CreditoEmpleados},$F{CreditoInstitucional},$F{Transferencias})]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
