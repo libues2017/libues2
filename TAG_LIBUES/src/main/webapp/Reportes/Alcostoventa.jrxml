@@ -54,6 +54,9 @@
 			<style backcolor="#D8D8D8"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="fechini" class="java.util.Date"/>
+	<parameter name="user" class="java.lang.String"/>
+	<parameter name="fenili" class="java.util.Date"/>
 	<queryString language="SQL">
 		<![CDATA[select 
 					    sum(CASE 
@@ -71,6 +74,7 @@
 					     IFNULL(T.TOTAL,0)  'Transferencias'     
 					FROM FACTURA F LEFT JOIN transferencia T
 					on  F.FECHAFACTURA=T.FECHATRANSFERENCIA
+					where F.FECHAFACTURA between $P{fechini} and $P{fenili}
 					Group by (FECHAFACTURA)]]>
 	</queryString>
 	<field name="Contado" class="java.lang.Double"/>
@@ -141,7 +145,7 @@
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement x="-11" y="-42" width="85" height="20" uuid="22fb0e34-9b66-4f1b-82f0-33b3ba15173d">
+				<reportElement x="48" y="-42" width="64" height="20" uuid="22fb0e34-9b66-4f1b-82f0-33b3ba15173d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ff8582b9-6d44-488a-8efe-2258e615f62d"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -150,7 +154,7 @@
 				<text><![CDATA[Contado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="80" y="-40" width="190" height="18" uuid="621756d7-5409-428f-a7ab-343d9c088407">
+				<reportElement x="139" y="-40" width="123" height="18" uuid="621756d7-5409-428f-a7ab-343d9c088407">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="03fb2e75-02cb-41d8-8994-4f99c1df99f0"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -190,7 +194,7 @@
 	<detail>
 		<band height="44" splitType="Stretch">
 			<textField>
-				<reportElement x="124" y="19" width="114" height="17" uuid="f7d5e389-8946-4821-b9d8-4b9aeece18a2"/>
+				<reportElement x="147" y="19" width="102" height="17" uuid="f7d5e389-8946-4821-b9d8-4b9aeece18a2"/>
 				<textFieldExpression><![CDATA[$F{CreditoEmpleados}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -202,7 +206,7 @@
 				<textFieldExpression><![CDATA[$F{Transferencias}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="-1" y="21" width="100" height="13" uuid="f871033c-85d5-41ec-9c17-6e5a963962a6"/>
+				<reportElement x="53" y="21" width="70" height="13" uuid="f871033c-85d5-41ec-9c17-6e5a963962a6"/>
 				<textFieldExpression><![CDATA[$F{Contado}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -268,11 +272,11 @@
 				</reportElement>
 			</line>
 			<textField>
-				<reportElement x="12" y="16" width="67" height="30" uuid="7b2dc342-a7ff-467b-a53a-56f4ddb79f9c"/>
-				<textFieldExpression><![CDATA[SUM(Math.round($V{totalcontado}))]]></textFieldExpression>
+				<reportElement x="54" y="16" width="67" height="30" uuid="7b2dc342-a7ff-467b-a53a-56f4ddb79f9c"/>
+				<textFieldExpression><![CDATA[SUM($V{totalcontado})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="136" y="16" width="100" height="30" uuid="3dd06991-c6b6-423c-ad47-e3c783c7a20b"/>
+				<reportElement x="139" y="16" width="100" height="30" uuid="3dd06991-c6b6-423c-ad47-e3c783c7a20b"/>
 				<textFieldExpression><![CDATA[SUM($V{empleadoues})]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -287,6 +291,10 @@
 				<reportElement x="488" y="18" width="65" height="30" uuid="8cfa4d6e-9f25-4c76-acd4-6645fbb1c8ff"/>
 				<textFieldExpression><![CDATA[SUM(SUM($V{totalcontado}),SUM($V{empleadoues}),SUM($V{creditoinstitucional}),SUM($V{transferencias}))]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="-6" y="19" width="42" height="21" uuid="d47755c0-9e32-463f-953d-fd446a7418be"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
 		</band>
 	</summary>
 </jasperReport>
