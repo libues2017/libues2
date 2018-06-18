@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Kardex" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fc3901fb-7073-4048-a2d0-2f3c482a1bfa">
 	<property name="com.jaspersoft.studio.data.sql.tables">
 		<![CDATA[bGlidWVzLmF1dG9yX2xpYnJvIEFTICwzNjksNTYsMmUyYjkzMWQtY2Q3Mi00MWJjLWIwNTgtYzEy
@@ -10,7 +10,7 @@ LWNiMTUtNDQwZi04ZDAxLTkwOGRjNjQ2ZTVhYTs=]]>
 	</property>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="315"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="673"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="fec" class="java.lang.String"/>
 	<parameter name="fechini" class="java.util.Date"/>
 	<parameter name="fenili" class="java.util.Date"/>
@@ -40,7 +40,8 @@ WHERE
 	(libues.autor.`CODIGOAUTOR` = libues.autor_libro.`CODIGOAUTOR`)	 AND
 	(libues.producto.`CORRELATIVO` = libues.bitacora.`CODIGOPRODUCTO`) AND
     (libues.producto.`CODIGOPRODUCTO` = libues.autor_libro.`CODIGOPRODUCTO`) AND
-	(libues.bitacora.`FECHABITACORA` between $P{fechini} and $P{fenili})]]>
+	(libues.bitacora.`FECHABITACORA` between $P{fechini} and $P{fenili})
+GROUP BY libues.producto.`CORRELATIVO`]]>
 	</queryString>
 	<field name="CODIGOBITACORA" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="CODIGOBITACORA"/>
