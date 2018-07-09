@@ -304,7 +304,7 @@ public class AppControllerLibues {
     }
  
     /**
-     * Se llamar� a este m�todo en el env�o del formulario, manejando la solicitud POST para
+     * Se llamaria este metodo en el env�o del formulario, manejando la solicitud POST para
      * guardar usuario en la base de datos. Tambi�n valida la entrada del usuario.
      */
     @RequestMapping(value = { "/newuser" }, method = RequestMethod.POST)
@@ -904,13 +904,16 @@ public class AppControllerLibues {
             return "producto-reg";
         }
              	
-    	System.out.println(producto.getEditorial());    	
-    	byte[] file = readBytesFromFile("/home/vladimir/mytemp/" + producto.getLocation());
-    	System.out.println("/home/vladimir/mytemp/"  +producto.getLocation());
+    	System.out.println(producto.getEditorial()); 
+    	byte[] file = readBytesFromFile("c:/mytemp/" + producto.getLocation());
+    	System.out.println("c:/mytemp/"  +producto.getLocation());
+    	//byte[] file = readBytesFromFile("/home/vladimir/mytemp/" + producto.getLocation());
+    	//System.out.println("/home/vladimir/mytemp/"  +producto.getLocation());
     	producto.setImagen(file);
-    	
-    	byte[] filec = readBytesFromFile("/home/vladimir/mytemp/" + producto.getLocationc());
-    	System.out.println("/home/vladimir/mytemp/"  +producto.getLocation());
+    	byte[] filec = readBytesFromFile("c:/mytemp/" + producto.getLocationc());
+    	System.out.println("c:/mytemp/"  +producto.getLocation());
+    	//byte[] filec = readBytesFromFile("/home/vladimir/mytemp/" + producto.getLocationc());
+    	//System.out.println("/home/vladimir/mytemp/"  +producto.getLocation());
     	producto.setImagenc(filec);
     	
     	productoService.saveProducto(producto);
@@ -939,14 +942,18 @@ public class AppControllerLibues {
         }
         
         if(producto.getLocation()!=""){
-        	byte[] file = readBytesFromFile("/home/vladimir/mytemp/" + producto.getLocation());
-        	System.out.println("/home/vladimir/mytemp/" + producto.getLocation());
+        	byte[] file = readBytesFromFile("c:/mytemp/" + producto.getLocation());
+        	System.out.println("c:/mytemp/" + producto.getLocation());         	
+        	//byte[] file = readBytesFromFile("/home/vladimir/mytemp/" + producto.getLocation());
+        	//System.out.println("/home/vladimir/mytemp/" + producto.getLocation());
         	producto.setImagen(file);
         }
         
         if(producto.getLocationc()!=""){
-        	byte[] filec = readBytesFromFile("/home/vladimir/mytemp/" + producto.getLocationc());
-        	System.out.println("/home/vladimir/mytemp/" + producto.getLocationc());
+        	byte[] filec = readBytesFromFile("c:/mytemp/" + producto.getLocationc());
+        	System.out.println("c:/mytemp/" + producto.getLocationc());        	
+        	//byte[] filec = readBytesFromFile("/home/vladimir/mytemp/" + producto.getLocationc());
+        	//System.out.println("/home/vladimir/mytemp/" + producto.getLocationc());
         	producto.setImagenc(filec);
         }
         
